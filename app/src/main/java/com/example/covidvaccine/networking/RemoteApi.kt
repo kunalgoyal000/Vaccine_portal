@@ -1,5 +1,7 @@
 package com.example.covidvaccine.networking
 
+import android.content.Context
+import com.example.covidvaccine.R
 import com.example.covidvaccine.networking.RemoteApiService
 import com.example.covidvaccine.models.*
 import java.text.DateFormat
@@ -9,12 +11,12 @@ import java.util.*
 const val BASE_URL = "https://cdn-api.co-vin.in/api/"
 const val USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
 
-class RemoteApi(private val apiService: RemoteApiService) {
+class RemoteApi(private val context: Context, private val apiService: RemoteApiService) {
 
     suspend fun getStates(): Result<List<State>> = try {
         val data = apiService.fetchStatesList()
         if(data.states.isEmpty()){
-            FailureString("No data Found")
+            FailureString(context.getString(R.string.no_slots_available))
         }else {
             Success(data.states)
         }
@@ -25,7 +27,7 @@ class RemoteApi(private val apiService: RemoteApiService) {
     suspend fun getDistricts(stateId: Int): Result<List<District>> = try {
         val data = apiService.fetchDistrictsList(stateId)
         if(data.districts.isEmpty()){
-            FailureString("No data Found")
+            FailureString(context.getString(R.string.no_slots_available))
         }else {
             Success(data.districts)
         }
@@ -37,7 +39,7 @@ class RemoteApi(private val apiService: RemoteApiService) {
 
         val data = apiService.fetchSessionsByPin(pincode,date)
         if(data.sessions.isEmpty()){
-            FailureString("No data Found")
+            FailureString(context.getString(R.string.no_slots_available))
         }else {
             Success(data.sessions)
         }
@@ -48,7 +50,7 @@ class RemoteApi(private val apiService: RemoteApiService) {
     suspend fun getSessionsByDistricts(districtId:Int,date:String): Result<List<Session>> = try {
         val data = apiService.fetchSessionsByDistrict(districtId,date)
         if(data.sessions.isEmpty()){
-            FailureString("No data Found")
+            FailureString(context.getString(R.string.no_slots_available))
         }else {
             Success(data.sessions)
         }

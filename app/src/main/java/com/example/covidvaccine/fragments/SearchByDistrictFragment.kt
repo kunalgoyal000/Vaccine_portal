@@ -53,7 +53,7 @@ class SearchByDistrictFragment : Fragment() {
         if(networkStatusChecker?.isConnectedToInternet() == true) {
             showtextView("Select a state to proceed",false)
         }else{
-            showtextView("No Internet Connection", false)
+            showtextView(getString(R.string.no_internet_connection), false)
         }
 
         tempSessionsList= emptyList()
@@ -95,7 +95,7 @@ class SearchByDistrictFragment : Fragment() {
                 val dialog = builder?.create()
                 dialog?.show()
             }else{
-                showtextView("No Internet Connection", false)
+                showtextView(getString(R.string.no_internet_connection), false)
             }
         }
 
@@ -108,7 +108,7 @@ class SearchByDistrictFragment : Fragment() {
                         .show()
                 }
             }else{
-                showtextView("No Internet Connection", false)
+                showtextView(getString(R.string.no_internet_connection), false)
             }
         }
 
@@ -164,7 +164,7 @@ class SearchByDistrictFragment : Fragment() {
     private fun hideProgressDialogDueToError() {
         districtList= emptyList()
         progressDialog.dismiss()
-        showtextView("No Internet Connection", false)
+        showtextView(getString(R.string.no_internet_connection), false)
     }
 
     private fun showProgressDialog() {
@@ -208,7 +208,7 @@ class SearchByDistrictFragment : Fragment() {
                             sessionsAdapter.setSessions(list)
                             sessionsAdapter.notifyDataSetChanged()
                         }else{
-                            showtextView("No Data Found",fromSearch)
+                            showtextView(getString(R.string.no_slots_available),fromSearch)
                         }
                     }else if (todayResults is Success) {
                         val list=getFinalSessionsList(todayResults,null,fromSearch);
@@ -216,7 +216,7 @@ class SearchByDistrictFragment : Fragment() {
                             sessionsAdapter.setSessions(list)
                             sessionsAdapter.notifyDataSetChanged()
                         }else{
-                            showtextView("No Data Found",fromSearch)
+                            showtextView(getString(R.string.no_slots_available),fromSearch)
                         }
                     } else if (tomorrowResults is Success) {
                         val list=getFinalSessionsList(null,tomorrowResults,fromSearch);
@@ -224,20 +224,20 @@ class SearchByDistrictFragment : Fragment() {
                             sessionsAdapter.setSessions(list)
                             sessionsAdapter.notifyDataSetChanged()
                         }else{
-                            showtextView("No Data Found",fromSearch)
+                            showtextView(getString(R.string.no_slots_available),fromSearch)
                         }
                     }else if(todayResults is FailureString){
                         showtextView(todayResults.errorstring, false);
                     }else if(todayResults is Failure){
                         if((todayResults.error) is IOException) {
-                            showtextView("No Internet Connection", false)
+                            showtextView(getString(R.string.no_internet_connection), false)
                         }else{
                             showtextView("Some error occured.Please try again", false)
                         }
                     }
                 }
         }else{
-            showtextView("No Internet Connection", false)
+            showtextView(getString(R.string.no_internet_connection), false)
         }
     }
 
@@ -250,9 +250,7 @@ class SearchByDistrictFragment : Fragment() {
 
     private fun getFinalSessionsList(todayResults: Success<List<Session>>?, tomorrowResults: Success<List<Session>>?,fromSearch: Boolean): List<Session> {
         var todayAvailableSessionsList:List<Session> = emptyList()
-        var todayNonAvailableSessionsList:List<Session> = emptyList()
         var tomorrowAvailableSessionsList:List<Session> = emptyList()
-        var tomorrowNonAvailableSessionsList:List<Session> = emptyList()
 
         showRecyclerView()
 
@@ -267,8 +265,6 @@ class SearchByDistrictFragment : Fragment() {
             for (session in tempSessionsList) {
                 if (session.available_capacity > 0) {
                     todayAvailableSessionsList = todayAvailableSessionsList + session
-                } else {
-                    todayNonAvailableSessionsList = todayNonAvailableSessionsList + session
                 }
             }
         }
@@ -284,14 +280,12 @@ class SearchByDistrictFragment : Fragment() {
             for (session in tempSessionsList) {
                 if (session.available_capacity > 0) {
                     tomorrowAvailableSessionsList = tomorrowAvailableSessionsList + session
-                } else {
-                    tomorrowNonAvailableSessionsList = tomorrowNonAvailableSessionsList + session
                 }
             }
 
         }
 
-        finalSessionsList=todayAvailableSessionsList+tomorrowAvailableSessionsList+ todayNonAvailableSessionsList + tomorrowNonAvailableSessionsList
+        finalSessionsList=todayAvailableSessionsList+tomorrowAvailableSessionsList
 
         if(fromSearch && (doseCheckedItem!=-1 || ageCheckedItem !=-1)) {
             var finalList: List<Session> = emptyList()

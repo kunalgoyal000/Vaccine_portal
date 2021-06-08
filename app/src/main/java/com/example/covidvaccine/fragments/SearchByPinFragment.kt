@@ -61,7 +61,7 @@ class SearchByPinFragment : Fragment() {
         if(networkStatusChecker?.isConnectedToInternet() == true) {
             showTextView("Start a new search", false)
         }else{
-            showTextView("No Internet Connection", false)
+            showTextView(getString(R.string.no_internet_connection), false)
         }
 
         sessionsAdapter=SessionsAdapter(activity,finalSessionsList)
@@ -116,7 +116,7 @@ class SearchByPinFragment : Fragment() {
                             sessionsAdapter.setSessions(list)
                             sessionsAdapter.notifyDataSetChanged()
                         }else{
-                            showTextView("No Data Found",fromSearch)
+                            showTextView(getString(R.string.no_slots_available),fromSearch)
                         }
                     }else if (todayResults is Success) {
                         val list=getFinalSessionsList(todayResults,null,fromSearch);
@@ -124,7 +124,7 @@ class SearchByPinFragment : Fragment() {
                             sessionsAdapter.setSessions(list)
                             sessionsAdapter.notifyDataSetChanged()
                         }else{
-                            showTextView("No Data Found",fromSearch)
+                            showTextView(getString(R.string.no_slots_available),fromSearch)
                         }
                     } else if (tomorrowResults is Success) {
                         val list=getFinalSessionsList(null,tomorrowResults,fromSearch);
@@ -132,13 +132,13 @@ class SearchByPinFragment : Fragment() {
                             sessionsAdapter.setSessions(list)
                             sessionsAdapter.notifyDataSetChanged()
                         }else{
-                            showTextView("No Data Found",fromSearch)
+                            showTextView(getString(R.string.no_slots_available),fromSearch)
                         }
                     }else if(todayResults is FailureString){
                         showTextView(todayResults.errorstring, false);
                     }else if(todayResults is Failure){
                         if((todayResults.error) is IOException) {
-                            showTextView("No Internet Connection", false)
+                            showTextView(getString(R.string.no_internet_connection), false)
                         }else{
                             showTextView("Some error occured.Please try again", false)
                         }
@@ -148,7 +148,7 @@ class SearchByPinFragment : Fragment() {
                 //if pincode length is smaller than 6 or empty
             }
         }else{
-            showTextView("No Internet Connection", false)
+            showTextView(getString(R.string.no_internet_connection), false)
         }
     }
 
@@ -165,9 +165,7 @@ class SearchByPinFragment : Fragment() {
         fromSearch: Boolean
     ): List<Session> {
         var todayAvailableSessionsList:List<Session> = emptyList()
-        var todayNonAvailableSessionsList:List<Session> = emptyList()
         var tomorrowAvailableSessionsList:List<Session> = emptyList()
-        var tomorrowNonAvailableSessionsList:List<Session> = emptyList()
 
         showRecyclerView()
 
@@ -182,8 +180,6 @@ class SearchByPinFragment : Fragment() {
             for (session in tempSessionsList) {
                 if (session.available_capacity > 0) {
                     todayAvailableSessionsList = todayAvailableSessionsList + session
-                } else {
-                    todayNonAvailableSessionsList = todayNonAvailableSessionsList + session
                 }
             }
         }
@@ -199,14 +195,12 @@ class SearchByPinFragment : Fragment() {
             for (session in tempSessionsList) {
                 if (session.available_capacity > 0) {
                     tomorrowAvailableSessionsList = tomorrowAvailableSessionsList + session
-                } else {
-                    tomorrowNonAvailableSessionsList = tomorrowNonAvailableSessionsList + session
                 }
             }
 
         }
 
-        finalSessionsList=todayAvailableSessionsList+tomorrowAvailableSessionsList+ todayNonAvailableSessionsList + tomorrowNonAvailableSessionsList
+        finalSessionsList=todayAvailableSessionsList+tomorrowAvailableSessionsList
 
 
         if(fromSearch && (doseCheckedItem!=-1 || ageCheckedItem !=-1)) {
