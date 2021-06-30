@@ -22,7 +22,9 @@ class Session(
     val available_capacity_dose2: Int,
     val available_capacity: Int,
     val fee: String,
+    val allow_all_age: Boolean?=null,
     val min_age_limit: Int,
+    val max_age_limit: Int?=null,
     val vaccine: String,
     val slots: List<String> = listOf(),
 )
