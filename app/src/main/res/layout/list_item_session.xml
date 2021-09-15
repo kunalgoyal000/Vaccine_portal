@@ -24,6 +24,7 @@
             android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
             android:maxLines="1"
+            android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -49,15 +50,17 @@
             app:layout_constraintTop_toTopOf="@+id/centerName"
             app:layout_constraintBottom_toBottomOf="@+id/centerName"
             android:textColor="@color/white"
-            android:textSize="12dp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/locationName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:paddingStart="10dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:gravity="start"
+            app:layout_constraintEnd_toStartOf="@id/ageLimit"
             android:paddingTop="3dp"
             android:background="?attr/selectableItemBackground"
             android:textColor="@color/black"
@@ -115,7 +118,7 @@
             app:layout_constraintTop_toTopOf="@+id/doseOne"
             app:layout_constraintBottom_toBottomOf="@+id/doseTwo"
             android:textColor="@color/white"
-            android:textSize="12dp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/vaccineName"

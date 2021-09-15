@@ -21,13 +21,14 @@
             android:id="@+id/stateTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Select State"
+            android:text="@string/select_state"
             android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:textColor="@color/purple_500"
-            android:maxLines="1"
             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
             android:textAlignment="center"
             android:padding="8dp"
+            android:maxLines="2"
             android:visibility="visible"
             android:background="@drawable/background_edittext_selected"
             android:layout_marginEnd="10dp"
@@ -40,16 +41,17 @@
             android:id="@+id/districtTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Select District"
+            android:text="@string/select_district"
             android:gravity="center"
             android:foreground="?attr/selectableItemBackground"
             android:textColor="@color/purple_500"
             android:textAlignment="center"
-            android:maxLines="1"
             android:padding="8dp"
+            android:maxLines="2"
             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/background_edittext_selected"
             app:layout_constraintStart_toEndOf="@+id/stateTextView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -72,7 +74,7 @@
             android:id="@+id/doseDistrictFilter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Dose"
+            android:text="@string/dose"
             android:gravity="center"
             android:textColor="@color/purple_500"
             android:maxLines="1"
@@ -91,7 +93,7 @@
             android:id="@+id/ageDistrictFilter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Age"
+            android:text="@string/age"
             android:gravity="center"
             android:foreground="?attr/selectableItemBackground"
             android:textColor="@color/purple_500"
@@ -105,6 +107,45 @@
             android:background="@drawable/background_edittext_selected"
             app:layout_constraintStart_toEndOf="@+id/doseDistrictFilter"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/costDistrictFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cost"
+            android:gravity="center"
+            android:textColor="@color/purple_500"
+            android:maxLines="1"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:background="@drawable/background_edittext_selected"
+            android:layout_marginEnd="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintEnd_toStartOf="@+id/vaccineDistrictFilter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doseDistrictFilter" />
+
+        <TextView
+            android:id="@+id/vaccineDistrictFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/vaccine"
+            android:gravity="center"
+            android:textColor="@color/purple_500"
+            android:maxLines="1"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/resultDistrictCount"
+            android:background="@drawable/background_edittext_selected"
+            android:layout_marginEnd="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintStart_toEndOf="@+id/costDistrictFilter"
+            app:layout_constraintTop_toTopOf="@+id/costDistrictFilter" />
 
         <TextView
             android:id="@+id/resultDistrictCount"
@@ -125,6 +166,25 @@
             app:layout_constraintStart_toEndOf="@+id/ageDistrictFilter"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/refreshDistrictData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="?attr/actionBarItemBackground"
+            android:textAlignment="center"
+            android:maxLines="1"
+            android:layout_marginEnd="10dp"
+            android:padding="2dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="visible"
+            android:src="@drawable/ic_baseline_refresh_24"
+            app:layout_constraintBottom_toBottomOf="@+id/vaccineDistrictFilter"
+            app:layout_constraintStart_toEndOf="@+id/vaccineDistrictFilter"
+            app:layout_constraintTop_toTopOf="@+id/vaccineDistrictFilter"
+            app:tint="@color/purple_500" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
@@ -143,14 +203,15 @@
 
     <TextView
         android:id="@+id/textViewDistrict"
-        android:layout_width="wrap_content"
-        android:indeterminateTint="@color/purple_200"
-        android:progressTint="@color/purple_200"
+        android:layout_width="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:visibility="visible"
-        android:text="Start a new search"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="@string/start_a_new_search"
         android:fontFamily="sans-serif-light"
         android:textSize="20sp"
         android:textColor="@android:color/darker_gray"
@@ -162,11 +223,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="10dp"
-        android:visibility="visible"
         android:textColor="@color/purple_200"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filtersDistrictLayout"/>
+        app:layout_constraintTop_toBottomOf="@+id/filtersDistrictLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

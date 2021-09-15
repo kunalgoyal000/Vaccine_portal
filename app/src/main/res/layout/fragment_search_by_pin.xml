@@ -21,7 +21,7 @@
         android:id="@+id/edittext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Pin Code"
+        android:hint="@string/enter_pin_code"
         android:textColor="@color/purple_500"
         android:maxLines="1"
         android:maxLength="6"
@@ -38,19 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/errorTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="12dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginStart="5dp"
-            android:fontFamily="sans-serif-light"
-            android:text="By default, today &amp; next day results will be shown."
-            app:layout_constraintStart_toStartOf="@+id/edittext"
-            app:layout_constraintEnd_toEndOf="@+id/edittext"
-            app:layout_constraintTop_toBottomOf="@+id/edittext"/>
+
     <Button
         android:id="@+id/search"
         android:layout_width="wrap_content"
@@ -61,7 +49,7 @@
         android:backgroundTint="@color/design_default_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edittext"
-        android:text="Search"/>
+        android:text="@string/search"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,7 +69,7 @@
             android:id="@+id/dosePinFilter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Dose"
+            android:text="@string/dose"
             android:gravity="center"
             android:textColor="@color/purple_500"
             android:maxLines="1"
@@ -100,7 +88,7 @@
             android:id="@+id/agePinFilter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Age"
+            android:text="@string/age"
             android:gravity="center"
             android:foreground="?attr/selectableItemBackground"
             android:textColor="@color/purple_500"
@@ -114,6 +102,45 @@
             android:background="@drawable/background_edittext_selected"
             app:layout_constraintStart_toEndOf="@+id/dosePinFilter"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/costPinFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cost"
+            android:gravity="center"
+            android:textColor="@color/purple_500"
+            android:maxLines="1"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:background="@drawable/background_edittext_selected"
+            android:layout_marginEnd="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintEnd_toStartOf="@+id/vaccinePinFilter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dosePinFilter" />
+
+        <TextView
+            android:id="@+id/vaccinePinFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/vaccine"
+            android:gravity="center"
+            android:textColor="@color/purple_500"
+            android:maxLines="1"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/resultPinCount"
+            android:background="@drawable/background_edittext_selected"
+            android:layout_marginEnd="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintStart_toEndOf="@+id/costPinFilter"
+            app:layout_constraintTop_toTopOf="@+id/costPinFilter" />
 
         <TextView
             android:id="@+id/resultPinCount"
@@ -134,6 +161,25 @@
             app:layout_constraintStart_toEndOf="@+id/agePinFilter"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/refreshPinData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="?attr/actionBarItemBackground"
+            android:textAlignment="center"
+            android:maxLines="1"
+            android:layout_marginEnd="10dp"
+            android:padding="2dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="visible"
+            android:src="@drawable/ic_baseline_refresh_24"
+            app:layout_constraintBottom_toBottomOf="@+id/vaccinePinFilter"
+            app:layout_constraintStart_toEndOf="@+id/vaccinePinFilter"
+            app:layout_constraintTop_toTopOf="@+id/vaccinePinFilter"
+            app:tint="@color/purple_500" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
@@ -152,14 +198,17 @@
 
     <TextView
         android:id="@+id/textViewPin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:indeterminateTint="@color/purple_200"
         android:progressTint="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:visibility="visible"
-        android:text="Start a new search"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="@string/start_a_new_search"
         android:fontFamily="sans-serif-light"
         android:textSize="20sp"
         android:textColor="@android:color/darker_gray"

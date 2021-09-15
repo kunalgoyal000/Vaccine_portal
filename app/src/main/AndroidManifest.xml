@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.covidvaccine">
+    package="com.kunalapps.vaccinePortal"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -13,7 +15,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_vaccine_final_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CovidVaccine">
+        android:theme="@style/Theme.VaccinePortal">
+        <activity
+            android:name=".LanguageActivity"
+            android:exported="true">
+        </activity>
         <activity
             android:name=".WebViewActivity"
             android:exported="true" />

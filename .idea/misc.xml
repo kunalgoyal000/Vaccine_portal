@@ -31,6 +31,14 @@
         <entry key="..\:/AndroidStudioProjects/CovidVaccine/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22864583333333333" />
         <entry key="..\:/AndroidStudioProjects/CovidVaccine/app/src/main/res/mipmap-anydpi-v26/ic_launcher_vaccine.xml" value="0.22864583333333333" />
         <entry key="..\:/AndroidStudioProjects/CovidVaccine/app/src/main/res/mipmap-anydpi-v26/ic_launcher_vaccine_round.xml" value="0.22864583333333333" />
+        <entry key="..\:/StudioProjects/Vaccine_portal/app/src/main/res/drawable/background_edittext_selected.xml" value="0.240625" />
+        <entry key="..\:/StudioProjects/Vaccine_portal/app/src/main/res/layout/activity_language.xml" value="0.14" />
+        <entry key="..\:/StudioProjects/Vaccine_portal/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/StudioProjects/Vaccine_portal/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/StudioProjects/Vaccine_portal/app/src/main/res/layout/activity_web_view.xml" value="0.1" />
+        <entry key="..\:/StudioProjects/Vaccine_portal/app/src/main/res/layout/fragment_search_by_district.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/Vaccine_portal/app/src/main/res/layout/fragment_search_by_pin.xml" value="0.2323529411764706" />
+        <entry key="..\:/StudioProjects/Vaccine_portal/app/src/main/res/layout/list_item_session.xml" value="0.22" />
       </map>
     </option>
   </component>

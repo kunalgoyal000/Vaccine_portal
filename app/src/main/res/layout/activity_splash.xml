@@ -27,8 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:textSize="25dp"
+        android:textAllCaps="true"
         android:fontFamily="sans-serif-condensed-medium"
         android:textColor="@color/purple_200"
-        android:text="VACCINE PORTAL"/>
+        android:text="@string/app_name"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
